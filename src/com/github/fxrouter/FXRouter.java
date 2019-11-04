@@ -207,17 +207,12 @@ public final class FXRouter {
      * @throws Exception: throw FXMLLoader exception if file is not loaded correctly
      */
     private static void loadNewRoute(RouteScene route) throws IOException {
-        // get Main Class package name to get correct files path
-        String pathRef = mainRef.getClass().getPackage().getName();
 
         // set FXRouter current route reference
         currentRoute = route;
 
-        // create correct file path.  "/" doesn't affect any OS
-        String scenePath = "/" + pathRef + "/" + route.scenePath;
-
         // load .fxml resource
-        Parent resource = FXMLLoader.load(new Object() { }.getClass().getResource(scenePath));
+        Parent resource = FXMLLoader.load(new Object() { }.getClass().getResource(route.scenePath));
 
         // set window title from route settings or default setting
         window.setTitle(route.windowTitle);
